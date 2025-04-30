@@ -31,14 +31,14 @@ end
 -- ============================================================================================= --
 
 
-local leyakReceiveBeginPlayHookRegistered = false
+local leyakUpdateVisibilityHookRegistered = false
 local reaperReceiveBeginPlayHookRegistered = false
 local reaperOnDespawnHookRegistered = false
 local HOOKS = {}
 
 -- Inform player that the Leyak spawned
 function HOOKS.registerLeyakUpdateVisibilityHook()
-  if leyakReceiveBeginPlayHookRegistered == true then
+  if leyakUpdateVisibilityHookRegistered == true then
     return
   end
 
@@ -49,7 +49,7 @@ function HOOKS.registerLeyakUpdateVisibilityHook()
     HUD.sendWarningMessage("Leyak spawned nearby!", 3)
   end)
 
-  leyakReceiveBeginPlayHookRegistered = true
+  leyakUpdateVisibilityHookRegistered = true
 end
 
 -- Inform player that the Reaper spawned
@@ -63,12 +63,6 @@ function HOOKS.registerReaperReceiveBeginPlayHook()
   RegisterHook("/Game/Blueprints/Characters/NPCs/NPC_Monster_Reaper.NPC_Monster_Reaper_C:ReceiveBeginPlay", function(Context)
     UE4SS.log("Reaper spawned nearby!")
     HUD.sendWarningMessage("Reaper spawned nearby!", 3)
-
-    -- This does not actually despawn the reaper, just the visual part is gone. Coming close to
-    -- where the Reaper used to stay he tries to hit the player nevertheless.
-    -- TODO: Figure out a way to despawn the Reaper and drop its Night essence? Similar to LeyakNoMore ^^
-    --local reaperMonsterNPC = Context:get()
-    --reaperMonsterNPC:OnDespawn()
   end)
 
   reaperReceiveBeginPlayHookRegistered = true
