@@ -46,7 +46,7 @@ function HOOKS.registerLeyakUpdateVisibilityHook()
 
   RegisterHook("/Game/Blueprints/Characters/NPCs/NPC_Leyak.NPC_Leyak_C:UpdateLeyakVisibility", function(Context)
     UE4SS.log("Leyak spawned nearby!")
-    HUD.sendWarningMessage("Leyak spawned nearby!", 3)
+    HUD.sendWarningMessage("Something is stalking you ...", 3)
   end)
 
   leyakUpdateVisibilityHookRegistered = true
@@ -62,7 +62,7 @@ function HOOKS.registerReaperReceiveBeginPlayHook()
 
   RegisterHook("/Game/Blueprints/Characters/NPCs/NPC_Monster_Reaper.NPC_Monster_Reaper_C:ReceiveBeginPlay", function(Context)
     UE4SS.log("Reaper spawned nearby!")
-    HUD.sendWarningMessage("Reaper spawned nearby!", 3)
+    HUD.sendWarningMessage("Death is coming for you ...", 3)
   end)
 
   reaperReceiveBeginPlayHookRegistered = true
@@ -78,7 +78,7 @@ function HOOKS.registerReaperOnDespawnHook()
 
   RegisterHook("/Game/Blueprints/Characters/NPCs/NPC_Monster_Reaper.NPC_Monster_Reaper_C:OnDespawn", function(Context)
     UE4SS.log("Reaper despawned!")
-    HUD.sendWarningMessage("Reaper despawned!", 0)
+    HUD.sendWarningMessage("You were spared this time ...", 0)
   end)
 
   reaperOnDespawnHookRegistered = true
